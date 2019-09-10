@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@include mat-core();
+
+$almeriajs-banners-form-primary: mat-palette($mat-blue, A200, A100, A400);
+$almeriajs-banners-form-accent: mat-palette($mat-yellow);
+$almeriajs-banners-form-warn: mat-palette($mat-red);
+
+$almeriajs-banners-form-theme: mat-light-theme(
+  $almeriajs-banners-form-primary,
+  $almeriajs-banners-form-accent,
+  $almeriajs-banners-form-warn
+);
+
+@include angular-material-theme($almeriajs-banners-form-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
