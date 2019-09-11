@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AppService } from './app.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,9 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public bannerSrc = '';
   public showAdd = true;
 
-  constructor(private service: AppService) {}
+  constructor(public dialog: MatDialog) {}
 
   public data = {
     date: 'Jueves, 19 de Septiembre del 2019',
@@ -31,12 +31,12 @@ export class AppComponent {
     this.data.talks.splice(this.data.talks.indexOf(talk), 1);
   }
 
-  send() {
-    this.service
-      .getBanner(this.data)
-      .then((banner: any) => {
-        this.bannerSrc = `data:image/jpeg;base64,${banner.base64}`;
-      })
-      .catch(error => console.log(error));
+  create() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '1000px',
+      data: this.data,
+      autoFocus: false
+    });
+    dialogRef.afterClosed().subscribe(() => {});
   }
 }

@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  width: 100%;
+  .closes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 24px;
+  }
+  .banner {
+    margin: 0 -24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .mat-spinner {
+      margin: 32px 0;
+    }
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 24px;
+  }
+}

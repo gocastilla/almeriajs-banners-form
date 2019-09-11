@@ -1,62 +1,78 @@
-<mat-toolbar color="accent">
+<mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>AlmeríaJS - Generador de banners</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div>
+<section>
   <mat-form-field appearance="outline">
     <mat-label>Fecha</mat-label>
     <input matInput placeholder="" [(ngModel)]="data.date" />
+    <span matSuffix>
+      <mat-icon>date_range</mat-icon>
+    </span>
   </mat-form-field>
 
-  <mat-card *ngFor="let talk of data.talks">
-    <button mat-mini-fab color="warn" (click)="remove(talk)">
-      <mat-icon>clear</mat-icon>
-    </button>
+  <mat-card *ngFor="let talk of data.talks" class="mat-elevation-z4">
+    <div class="remove">
+      <button mat-raised-button color="warn" (click)="remove(talk)">
+        <mat-icon>clear</mat-icon> Borrar charla
+      </button>
+    </div>
 
     <mat-form-field appearance="outline">
       <mat-label>Título de la charla</mat-label>
       <input matInput placeholder="" [(ngModel)]="talk.title" />
+      <span matSuffix>
+        <mat-icon>title</mat-icon>
+      </span>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Nombre del ponente</mat-label>
       <input matInput placeholder="" [(ngModel)]="talk.speaker" />
+      <span matSuffix>
+        <mat-icon>person</mat-icon>
+      </span>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Avatar</mat-label>
+      <mat-label>Avatar (URL)</mat-label>
       <input matInput placeholder="" [(ngModel)]="talk.avatar" />
+      <span matSuffix>
+        <mat-icon>insert_photo</mat-icon>
+      </span>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Usuario de Twitter</mat-label>
       <input matInput placeholder="" [(ngModel)]="talk.twitter" />
+      <span matSuffix>
+        <mat-icon>share</mat-icon>
+      </span>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Descripción breve</mat-label>
       <input matInput placeholder="" [(ngModel)]="talk.rank" />
+      <span matSuffix>
+        <mat-icon>description</mat-icon>
+      </span>
     </mat-form-field>
   </mat-card>
 
   <button
-    mat-flat-button
+    mat-raised-button
     color="primary"
     [disabled]="data.talks.length > 1"
     (click)="add()"
   >
-    Añadir charla <mat-icon>add_circle</mat-icon>
+    <mat-icon>add</mat-icon> Añadir charla
   </button>
-</div>
+</section>
 
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-flat-button color="accent" (click)="send()">
-      ¡Quiero mi banner! <mat-icon>send</mat-icon>
-    </button>
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<img *ngIf="bannerSrc" [src]="bannerSrc" alt="Banner" />
+<footer>
+  <button mat-raised-button color="accent" (click)="create()">
+    <mat-icon>check</mat-icon> ¡QUIERO MI BANNER DE UNA VEZ!
+  </button>
+</footer>

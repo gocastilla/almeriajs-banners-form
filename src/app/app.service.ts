@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {} from 'query-string';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  constructor(private http: HttpClient) {}
+  private base: string;
+
+  constructor(private http: HttpClient) {
+    this.base = environment.production ? `` : `http://localhost:4321`;
+  }
 
   getBanner(data) {
-    return this.http
-      .get(`/banner.json?data=${encodeURI(JSON.stringify(data))}`)
-      .toPromise();
+    const _data = encodeURI(JSON.stringify(data));
+    return this.http.get(`${this.base}/banner.json?data=${_data}`).toPromise();
   }
 }

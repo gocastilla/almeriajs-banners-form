@@ -13,7 +13,7 @@
       justify-content: center;
     }
   }
-  & > div {
+  section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,18 +29,28 @@
     .mat-card {
       margin-bottom: 32px;
       padding: 32px 32px 16px;
-      .mat-mini-fab {
-        position: absolute;
-        top: -10px;
-        right: -10px;
+      .remove {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        padding-bottom: 24px;
+        .mat-mini-fab {
+          margin-top: -4px;
+          margin-right: -4px;
+        }
       }
     }
-    .mat-flat-button {
+  }
+  footer {
+    overflow: hidden;
+    width: 100%;
+    .mat-raised-button {
       display: block;
       width: 100%;
+      border-radius: 0px;
+      padding: 16px;
+      font-size: 16px;
     }
-  }
-  img {
-    width: 100%;
   }
 }
