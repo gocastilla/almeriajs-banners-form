@@ -7,22 +7,23 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  public bannerSrc = '';
   public showAdd = true;
 
-  constructor(private app: AppService) {}
+  constructor(private service: AppService) {}
 
   public data = {
-    date: '',
+    date: 'Jueves, 19 de Septiembre del 2019',
     talks: []
   };
 
   add() {
     this.data.talks.push({
-      title: '',
-      speaker: '',
-      avatar: '',
-      twitter: '',
-      rank: ''
+      title: 'This is a talk',
+      speaker: 'John Doe',
+      avatar: 'https://github.com/john.png',
+      twitter: '@johndoe',
+      rank: 'He is cool'
     });
   }
 
@@ -31,6 +32,11 @@ export class AppComponent {
   }
 
   send() {
-    this.app.getBanner(this.data);
+    this.service
+      .getBanner(this.data)
+      .then((banner: any) => {
+        this.bannerSrc = `data:image/jpeg;base64,${banner.base64}`;
+      })
+      .catch(error => console.log(error));
   }
 }

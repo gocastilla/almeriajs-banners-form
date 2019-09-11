@@ -22,7 +22,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Nombre del ponente</mat-label>
-      <input matInput placeholder="" [(ngModel)]="talk.name" />
+      <input matInput placeholder="" [(ngModel)]="talk.speaker" />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -58,3 +58,5 @@
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<img *ngIf="bannerSrc" [src]="bannerSrc" alt="Banner" />
