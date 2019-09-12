@@ -6,7 +6,7 @@
 
 <div class="banner mat-elevation-z4">
   <ng-container *ngIf="!isLoading; else loading">
-    <img [src]="base64" alt="Banner" />
+    <img [src]="downloadLink" alt="Banner" />
   </ng-container>
   <ng-template #loading>
     <mat-spinner></mat-spinner>
