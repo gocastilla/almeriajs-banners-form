@@ -13,9 +13,8 @@ export class AppService {
   }
 
   getBanner(data) {
-    const _data = encodeURI(JSON.stringify(data));
     return this.http
-      .get(`${this.base}/banner.png?data=${_data}`, { responseType: 'blob' })
+      .post(`${this.base}/banner`, data, { responseType: 'blob' })
       .toPromise();
   }
 }

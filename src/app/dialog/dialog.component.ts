@@ -23,21 +23,18 @@ export class DialogComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    const now = moment().format('YYYYMMDDHHmmss');
-    this.filename = `banner-almeriajs-${now}.png`;
     this.isLoading = true;
+    this.filename = `banner-almeriajs-${moment().format('YYYYMMDDHHmmss')}.png`;
     this.service
       .getBanner(this.data)
-      .then((banner: any) => {
-        this.prepareDownload(banner);
+      .then(banner => {
+        this.createdLink = URL.createObjectURL(banner);
+        this.downloadLink = this.sanitizer.bypassSecurityTrustUrl(
+          this.createdLink
+        );
         this.isLoading = false;
       })
       .catch(error => console.log(error));
-  }
-
-  prepareDownload(banner: Blob) {
-    this.createdLink = URL.createObjectURL(banner);
-    this.downloadLink = this.sanitizer.bypassSecurityTrustUrl(this.createdLink);
   }
 
   ngOnDestroy() {
